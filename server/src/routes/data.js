@@ -12,7 +12,7 @@ const fullPath = ['..', '..', '..', 'input_images'];
 
 router.get('/', (req, res) => {
   res.json({
-    message: 'utiliza /leer_imagenes o /verImagenes'
+    message: 'Bienvenido a la HasmaApp API 😏'
   });
 });
 
@@ -33,30 +33,32 @@ router.get('/leer_imagenes', (req, res) => {
       });
       return;
     }
-    // eslint-disable-next-line array-callback-return
-    files.map((file) => {
-      if (!file.startsWith('.')) {
-        fs.readFile(path.join(__dirname, ...fullPath, file), (error, data) => {
-          if (error) {
-            res.status(500).json({
-              error
+    if (files.length <= 1) {
+      // eslint-disable-next-line array-callback-return
+      files.map((file) => {
+        if (!file.startsWith('.')) {
+          fs.readFile(path.join(__dirname, ...fullPath, file), (error, data) => {
+            if (error) {
+              res.status(500).json({
+                error
+              });
+              return;
+            }
+            database.insert({
+              fileName: file,
+              keywords: file.substr(0, file.indexOf('.')).split('_'),
+              image: `data:image/png;base64,${Buffer.from(data).toString('base64')}`
             });
-            return;
-          }
-          database.insert({
-            fileName: file,
-            keywords: file.substr(0, file.indexOf('.')).split('_'),
-            image: `data:image/png;base64,${Buffer.from(data).toString('base64')}`
           });
-        });
-      }
-    });
+        }
+      });
+    }
     res.json({ filesSize: files.length });
   });
 });
 
 // Obtener datos de la BD
-router.get('/verImagenes', (req, res) => {
+router.get('/ver_todas_imagenes', (req, res) => {
   database.find({}, (err, docs) => {
     if (err) {
       res.status(500).json({
@@ -68,6 +70,28 @@ router.get('/verImagenes', (req, res) => {
       docs
     });
   });
+});
+
+// Obtener datos de la BD
+router.get('/ver_imagenes/:keyword', (req, res) => {
+  const { keyword } = req.params;
+  if (keyword && keyword !== '') {
+    database.find({ keywords: { $in: [keyword] } }, (err, docs) => {
+      if (err) {
+        res.status(500).json({
+          err
+        });
+        return;
+      }
+      res.json({
+        docs
+      });
+    });
+  } else {
+    res.status(500).json({
+      message: 'No se ha especificado una keyword'
+    });
+  }
 });
 
 module.exports = router;
