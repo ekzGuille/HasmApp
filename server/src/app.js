@@ -13,9 +13,7 @@ app.use(morgan('dev'));
 app.use(helmet());
 
 app.get('/', (req, res) => {
-  res.json({
-    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄'
-  });
+  res.redirect('api');
 });
 
 app.use('/api/', data);
