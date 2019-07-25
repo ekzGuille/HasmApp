@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>HasmApp</title>
+</head>
+<body>
+  <h1 class="cabecera">HasmApp buscador</h1>
+  <form>
+    <div class="buscador">
+      <input type="text" name="text" id="texto">
+      <input type="submit" onclick="buscar(event)" id="btnBuscar" value="Buscar"></input>
+    </div>
+  </form>
+  <img src="https://i.gifer.com/XVo6.gif" alt="cargando" id="cargandoGif" style="display: none; width: 300px; margin:0 auto;">
+  <div id="resultados">
+
+  </div>
+  <div id="noEncontrado" style="display: none;">
+    <img src="https://media.giphy.com/media/AuIvUrZpzBl04/giphy.gif" alt="notFound" style="display: block; width: 500px; margin:0 auto;">
+    <h2 style="text-align: center">Oops, parece que no se ha encontrado nada</h2>
+  </div>
+</body>
+<script src="index.js"></script>
+</html>
