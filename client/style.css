@@ -17,9 +17,7 @@ img {
 #resultados {
   column-count: 3;
 }
-input {
-  margin: 0 0 4% 0;
-}
+
 .buscador {
   text-align: center;
   margin: 4%;
@@ -29,6 +27,7 @@ input {
   border-radius: 20px;
   padding: 5px;
   font-size: 1em;
+  margin: 0 0 4% 0;
 }
 
 .buscador #btnBuscar {
