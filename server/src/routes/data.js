@@ -16,14 +16,6 @@ router.get('/', (req, res) => {
   });
 });
 
-// Test
-router.get('/insert/:algo', (req, res) => {
-  database.insert({ message: req.params.algo });
-  res.json({
-    message: 'OK'
-  });
-});
-
 // Leer imagenes de la carpeta y cargarlos en BD
 router.get('/leer_imagenes', (req, res) => {
   fs.readdir(path.join(__dirname, ...fullPath), (err, files) => {
@@ -53,7 +45,7 @@ router.get('/leer_imagenes', (req, res) => {
         }
       });
     }
-    res.json({ filesSize: files.length });
+    res.status(200).json({ filesSize: files.length });
   });
 });
 
@@ -66,7 +58,7 @@ router.get('/ver_todas_imagenes', (req, res) => {
       });
       return;
     }
-    res.json({
+    res.status(200).json({
       docs
     });
   });
@@ -83,7 +75,7 @@ router.get('/ver_imagenes/:keyword', (req, res) => {
         });
         return;
       }
-      res.json({
+      res.status(200).json({
         docs
       });
     });

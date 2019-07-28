@@ -10,11 +10,6 @@
     "lint-fix": "eslint --fix src"
   },
   "keywords": [],
-  "author": "CJ R. <cj@null.computer> (https://w3cj.now.sh)",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/w3cj/express-api-starter.git"
-  },
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
