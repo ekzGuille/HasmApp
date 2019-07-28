@@ -1,4 +1,4 @@
-const API_URL = `https://hasmappapi.ekzguille.now.sh`;
+const API_URL = `https://hasmappapi.now.sh`;
 // const API_URL = `http://localhost:5000;
 const cors_headers = {
   mode: 'cors',
