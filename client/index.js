@@ -1,3 +1,5 @@
+// const API_URL = `https://apihasmapp.now.sh/api`;
+const API_URL = `http://localhost:5000/api`;
 const input = document.getElementById('texto');
 const cargando = document.getElementById('cargandoGif');
 const noEncontrado = document.getElementById('noEncontrado');
@@ -9,7 +11,8 @@ async function buscar(e) {
   }
   cargando.style.display = 'block';
   noEncontrado.style.display = 'none';
-  const jsonData = await fetch(`http://localhost:5000/api/ver_imagenes/${texto}`);
+  // const jsonData = await fetch(`${API_URL}/ver_imagenes/${texto}`);
+  const jsonData = await fetch(`${API_URL}/ver_imagenes/${texto}`);
   const { docs } = await jsonData.json();
   
   const div = document.getElementById('resultados');
