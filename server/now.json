@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "name": "HasmAppApi",
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "src/index.js"
+    }
+  ],
+  "alias": [
+    "HasmAppApi"
+  ]
+}
