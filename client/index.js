@@ -1,5 +1,7 @@
-const API_URL = `https://hasmappapi.now.sh`;
+const API_URL_NOW = `https://hasmappapi.now.sh`;
+const API_URL_HEROKU = `https://hasmapp-api.herokuapp.com`;
 // const API_URL = `http://localhost:5000;
+let API_URL = API_URL_HEROKU;
 const cors_headers = {
   mode: 'cors',
   headers: {
@@ -9,8 +11,10 @@ const cors_headers = {
 const input = document.getElementById('texto');
 const cargando = document.getElementById('cargandoGif');
 const noEncontrado = document.getElementById('noEncontrado');
+const div = document.getElementById('resultados');
 async function buscar(e) {
   e.preventDefault();
+  div.innerHTML = '';
   const texto = input.value;
   if (!texto) {
     return;
@@ -20,7 +24,6 @@ async function buscar(e) {
   const jsonData = await fetch(`${API_URL}/api/ver_imagenes/${texto}`, cors_headers);
   try {
     const { docs } = await jsonData.json();
-    const div = document.getElementById('resultados');
     div.innerHTML = '';
     cargando.style.display = 'none';
     if (docs.length === 0) {
