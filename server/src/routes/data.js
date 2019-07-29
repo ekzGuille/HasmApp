@@ -86,4 +86,49 @@ router.get('/ver_imagenes/:keyword', (req, res) => {
   }
 });
 
+function obtenerRepeticion(lista) {
+  const datos = {};
+  // eslint-disable-next-line array-callback-return
+  lista.map((el) => {
+    if (!datos[el]) {
+      datos[el] = 1;
+    } else {
+      datos[el] += 1;
+    }
+  });
+  return datos;
+}
+
+// Obtener las categorias de los memes
+router.get('/obtener_categorias', (req, res) => {
+  const categorias = [];
+  database.find({}, { image: 0, fileName: 0, _id: 0 }, (err, docs) => {
+    if (err) {
+      res.status(500).json({
+        err
+      });
+      return;
+    }
+    docs.map(keys => categorias.push(...keys.keywords));
+
+    const lista_repeticion = obtenerRepeticion(categorias);
+    const keys = Object.keys(lista_repeticion);
+    let lista_categorias = [];
+    // eslint-disable-next-line array-callback-return
+    lista_categorias = keys.map((key) => {
+      if (lista_repeticion[key] > 2) {
+        return {
+          key,
+          cantidad: lista_repeticion[key]
+        };
+      }
+    });
+    // lista_repeticion = lista_repeticion.filter(cat => cat.length > 3);
+    res.status(200).json({
+      categorias: lista_categorias
+    });
+  });
+});
+
+
 module.exports = router;
