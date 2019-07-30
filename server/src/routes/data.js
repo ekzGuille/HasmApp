@@ -39,7 +39,7 @@ router.get('/leer_imagenes', (req, res) => {
             database.insert({
               fileName: file,
               keywords: file.substr(0, file.indexOf('.')).split('_'),
-              image: `data:image/png;base64,${Buffer.from(data).toString('base64')}`
+              image: `data:image/png;base64,${Buffer.from(data).toString('base64')}` // Convertir a Base64
             });
           });
         }
@@ -109,20 +109,25 @@ router.get('/obtener_categorias', (req, res) => {
       });
       return;
     }
+    // Obtener todas las keywords de las imagenes en un unico array
     docs.map(keys => categorias.push(...keys.keywords));
 
+    // Obtener la frecuencia de cada keyword
     const lista_repeticion = obtenerRepeticion(categorias);
     const keys = Object.keys(lista_repeticion);
     let lista_categorias = [];
+    // Filtrado de cantidad
     // eslint-disable-next-line array-callback-return
-    lista_categorias = keys.map((key) => {
+    keys.map((key) => {
       if (lista_repeticion[key] > 2) {
-        return {
+        lista_categorias.push({
           key,
           cantidad: lista_repeticion[key]
-        };
+        });
       }
     });
+    // Ordenacion descendente
+    lista_categorias = lista_categorias.sort((a, b) => b.cantidad - a.cantidad);
     // lista_repeticion = lista_repeticion.filter(cat => cat.length > 3);
     res.status(200).json({
       categorias: lista_categorias
