@@ -24,7 +24,7 @@ async function buscar(e = undefined) {
   }
   cargando.style.display = 'block';
   noEncontrado.style.display = 'none';
-  const docsPromise = await fetch(`${API_URL}/api/ver_imagenes/${texto}`, cors_headers);
+  const docsPromise = await fetch(`${API_URL}/api/ver_imagenes/${texto.trim().toLowerCase()}`, cors_headers);
   try {
     const { docs } = await docsPromise.json();
     div.innerHTML = '';
