@@ -2,20 +2,10 @@
 
 Hasma meme App 😏
 
-## Entornos
-* **now**
-  * [Cliente👨💼](https://hasmapp.now.sh/)
-  * [API👨💻](https://hasmappapi.now.sh/api)
+## Entorno
 * **heroku**
   * [Cliente👨💼](https://hasmapp.herokuapp.com/)
   * [API👨💻](https://hasmapp-api.herokuapp.com/api)
-
-### Desplegar en now
-* Cada carpeta *cliente* y *servidor* tienen su propio archivo de configuración **`now.json`**.
-* Para hacer deploy escribir:
-```sh
-now
-```
 
 ### Desplegar en Heroku
 * Cada app de Heroku ha de subirse a un *repositorio* propio de Heroku
