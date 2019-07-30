@@ -1,7 +1,7 @@
 body {
   margin: 0 auto;
   width: 70%;
-  background-color: #F2F3F4;
+  background-color: #f2f3f4;
   font-family: Arial, Helvetica, sans-serif;
 }
 .cabecera {
@@ -25,7 +25,7 @@ img {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
-#noEncontrado img{
+#noEncontrado img {
   width: 65%;
 }
 
@@ -35,7 +35,7 @@ img {
 
 .buscador {
   text-align: center;
-  margin: 4%;
+  margin: 4% 4% 0 4%;
 }
 
 .buscador input {
@@ -46,27 +46,57 @@ img {
 .buscador #btnBuscar {
   border-radius: 20px;
   font-size: 1.5em;
-  background-color: #5499C7;
-  color: #FFF;
+  background-color: #5499c7;
+  color: #fff;
 }
 
 .buscador #btnBuscar:active {
   background-color: #154360;
-  color: #FFF;
+  color: #fff;
 }
 
 .buscador #btnBuscar:hover {
   background-color: #154360;
-  color: #FFF;
+  color: #fff;
+}
+
+.cat-wrapper {
+  margin: 2% auto;
+  width: 70%;
+}
+
+#categorias {
+  text-align: center;
+}
+
+a.a-categoria {
+  text-decoration: none;
+  color: #5499c7;
+  font-size: 1.3em;
+  font-weight: bold;
+  display: block;
+}
+
+.a-categoria:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #154360;
 }
 
 @media only screen and (max-width: 1100px) {
   #resultados {
     column-count: 2;
   }
+  .cat-wrapper {
+      width: 88%;
+  }
 }
+
 @media only screen and (max-width: 768px) {
   #resultados {
     column-count: 1;
+  }
+  .cat-wrapper {
+      width: 100%;
   }
 }
