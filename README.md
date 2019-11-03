@@ -15,7 +15,7 @@ Hasma meme App 😏
   <?php header ('Location: /index.html'); ?>
   ```
 * Servidor
-  * Como la carpeta `database` está en un ruta fuera del servidor, se ha de incluir dentro de la carpeta `server.
+  * Como la carpeta `database` está en un ruta fuera del servidor, se ha de incluir dentro de la carpeta `server`.
   * Es **necesario** modificar el archivo `server/src/routes/data.js` y sustituir esta línea:
   ~`const database = new Datastore('../database/hasma.db');`~ por:
   ```js
