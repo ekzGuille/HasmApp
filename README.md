@@ -4,8 +4,9 @@ Hasma meme App 😏
 
 ## Entorno
 * **heroku**
-  * [Cliente👨💼](https://hasmapp.herokuapp.com/)
-  * [API👨💻](https://hasmapp-api.herokuapp.com/api)
+  * ~[Cliente👨💼](https://hasmapp.herokuapp.com/)~
+  * ~[API👨💻](https://hasmapp-api.herokuapp.com/api)~
+    * **Ya no están disponibles en Heroku debido a que han eliminado su capa gratuita**
 
 ### Desplegar en Heroku
 * Cada app de Heroku ha de subirse a un *repositorio* propio de Heroku.
